@@ -6,4 +6,5 @@ require (
 	github.com/aws/aws-sdk-go v1.38.12
 	github.com/spf13/afero v1.6.0
 	github.com/stretchr/testify v1.7.0
+	golang.org/x/text v0.3.6 // indirect
 )
