@@ -32,6 +32,14 @@ type UploadedFileProperties struct {
 	ACL          *string // ACL defines the right to apply
 	CacheControl *string // CacheControl defines the Cache-Control header
 	ContentType  *string // ContentType define the Content-Type header
+
+	BucketKeyEnabled        *bool   // BucketKeyEnabled
+	SSECustomerAlgorithm    *string // SSECustomerAlgorithm
+	SSECustomerKey          *string // SSECustomerKey
+	SSECustomerKeyMD5       *string // SSECustomerKeyMD5
+	SSEKMSEncryptionContext *string // SSEKMSEncryptionContext
+	SSEKMSKeyId             *string // SSEKMSKeyId
+	ServerSideEncryption    *string // ServerSideEncryption
 }
 
 // NewFs creates a new Fs object writing files to a given S3 bucket.
@@ -341,6 +349,34 @@ func applyFileCreateProps(req *s3.PutObjectInput, p *UploadedFileProperties) {
 	if p.ContentType != nil {
 		req.ContentType = p.ContentType
 	}
+
+	if p.BucketKeyEnabled != nil {
+		req.BucketKeyEnabled = p.BucketKeyEnabled
+	}
+
+	if p.SSECustomerAlgorithm != nil {
+		req.SSECustomerAlgorithm = p.SSECustomerAlgorithm
+	}
+
+	if p.SSECustomerKey != nil {
+		req.SSECustomerKey = p.SSECustomerKey
+	}
+
+	if p.SSECustomerKeyMD5 != nil {
+		req.SSECustomerKeyMD5 = p.SSECustomerKeyMD5
+	}
+
+	if p.SSEKMSEncryptionContext != nil {
+		req.SSEKMSEncryptionContext = p.SSEKMSEncryptionContext
+	}
+
+	if p.SSEKMSKeyId != nil {
+		req.SSEKMSKeyId = p.SSEKMSKeyId
+	}
+
+	if p.ServerSideEncryption != nil {
+		req.ServerSideEncryption = p.ServerSideEncryption
+	}
 }
 
 func applyFileWriteProps(req *s3manager.UploadInput, p *UploadedFileProperties) {
@@ -354,5 +390,33 @@ func applyFileWriteProps(req *s3manager.UploadInput, p *UploadedFileProperties) 
 
 	if p.ContentType != nil {
 		req.ContentType = p.ContentType
+	}
+
+	if p.BucketKeyEnabled != nil {
+		req.BucketKeyEnabled = p.BucketKeyEnabled
+	}
+
+	if p.SSECustomerAlgorithm != nil {
+		req.SSECustomerAlgorithm = p.SSECustomerAlgorithm
+	}
+
+	if p.SSECustomerKey != nil {
+		req.SSECustomerKey = p.SSECustomerKey
+	}
+
+	if p.SSECustomerKeyMD5 != nil {
+		req.SSECustomerKeyMD5 = p.SSECustomerKeyMD5
+	}
+
+	if p.SSEKMSEncryptionContext != nil {
+		req.SSEKMSEncryptionContext = p.SSEKMSEncryptionContext
+	}
+
+	if p.SSEKMSKeyId != nil {
+		req.SSEKMSKeyId = p.SSEKMSKeyId
+	}
+
+	if p.ServerSideEncryption != nil {
+		req.ServerSideEncryption = p.ServerSideEncryption
 	}
 }
